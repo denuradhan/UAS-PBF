@@ -1,28 +1,29 @@
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import Body from './components/Body';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MovieProvider, MovieContext, query } from './contexts/MovieContext';
+import { useContext, useEffect } from 'react';
 
 function App() {
+  const { query, setQuery } = useContext(MovieContext)
+  console.log(query)
+
+  useEffect(() => {
+    setQuery(query)
+  }, [query])
+
   return (
+    // TODO 
     <div className="App">
-      <Header handleClick={handleClick}/>
-      <Body rename={rename}/>
-      <Footer/>
+      <MovieProvider>
+        <Header />
+        <Body query={query} />
+      </MovieProvider>
+      <Footer />
     </div>
   );
-}
-function handleClick() {
-  var x = document.getElementById("inputSearch").value
-  if(x != null){
-      console.log(x)
-      rename(x)
-  }
-}
-
-function rename(string){
-  document.getElementById("demo").innerHTML = string
 }
 
 export default App;
