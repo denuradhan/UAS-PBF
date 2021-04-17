@@ -3,12 +3,12 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import Body from './components/Body';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MovieProvider, MovieContext, query } from './contexts/MovieContext';
-import { useContext, useEffect } from 'react';
+import { MovieContext } from './contexts/MovieContext';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const { query, setQuery } = useContext(MovieContext)
-  console.log(query)
+  const [ query, setQuery ] = useState("ant man")
+
 
   useEffect(() => {
     setQuery(query)
@@ -16,13 +16,14 @@ function App() {
 
   return (
     // TODO 
-    <div className="App">
-      <MovieProvider>
-        <Header />
-        <Body query={query} />
-      </MovieProvider>
-      <Footer />
-    </div>
+      <div className="App">
+        <MovieContext.Provider value={[ query, setQuery ]}>
+          <Header />
+            <Body query={query}/>
+        </MovieContext.Provider>
+        <Footer />
+      </div>
+    
   );
 }
 
