@@ -4,11 +4,7 @@ import { Modal } from 'react-bootstrap'
 import { MovieContext } from '../contexts/MovieContext';
 
 const Body = props => {
-    const {value, value2} = useContext(MovieContext)
-    const [query, setQuery] = value
-    const [linkAPI, setLinkAPI] = value2
-    const QUERY_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${query}`
-    const WEEK_API = 'https://api.themoviedb.org/3/trending/all/week?api_key=1304eb73177f6db734ad08f218c547c0'
+    const [linkAPI, setLinkAPI] = useContext(MovieContext)
     const [error, setError] = useState(false)
     const [isLoaded, setIsLoaded] = useState(true)
     const [movies, setMovies] = useState()

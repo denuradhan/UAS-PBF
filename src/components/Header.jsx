@@ -4,9 +4,7 @@ import { MovieContext} from '../contexts/MovieContext';
 
 export const Header = props => {
     const [searchValue, setSearchValue] = useState('')
-    const {value, value2} = useContext(MovieContext)
-    const [query, setQuery] = value
-    const [linkAPI, setLinkAPI] = value2
+    const [linkAPI, setLinkAPI] = useContext(MovieContext)
     const QUERY_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${searchValue}`
     const WEEK_API = 'https://api.themoviedb.org/3/trending/all/week?api_key=1304eb73177f6db734ad08f218c547c0'
     const DAY_API = 'https://api.themoviedb.org/3/trending/all/day?api_key=1304eb73177f6db734ad08f218c547c0'
@@ -48,9 +46,8 @@ export const Header = props => {
                 </Nav>
                 <Form inline>
                 <FormControl id="inputSearch" type="text" placeholder="Search" className="mr-sm-2" onChange={handleOnchange} />
-                <Button variant="outline-success" onClick={() => {
+                <Button variant="outline-success" href="#search" onClick={() => {
                     if(searchValue!==""){
-                        setQuery(searchValue)
                         setLinkAPI(QUERY_API)
                     }
                 }}>Search</Button>
