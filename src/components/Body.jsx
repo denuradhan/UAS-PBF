@@ -30,6 +30,9 @@ const Body = props => {
 
     return (
         <>
+            <div style = {{marginTop : "8%" }}>
+
+            </div>
             <Col className="container-fluid mt-4">
                 <CardColumns>
                     {!isLoaded ? movies.map(movie => (
@@ -79,6 +82,5 @@ const Body = props => {
         </>
     );
 };
-
 
 export default Body;

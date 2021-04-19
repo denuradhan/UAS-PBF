@@ -20,7 +20,7 @@ export const Header = props => {
 
     return ( 
     <div>
-            <Navbar  bg="dark" variant="dark">
+            <Navbar  bg="dark" variant="dark" fixed="top">
             <Navbar.Brand href="https://www.themoviedb.org/" target="_blank">
                 <img
                     src="/blue_square_TMDBLOGO.svg"

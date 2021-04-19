@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <MovieContext.Provider value={[linkAPI, setLinkAPI]}>
           <Header />
-          <Body/>
+          <Body />
         </MovieContext.Provider>
         <Footer />
       </div>
