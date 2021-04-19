@@ -4,8 +4,12 @@ import { MovieContext} from '../contexts/MovieContext';
 
 export const Header = props => {
     const [searchValue, setSearchValue] = useState('')
-
-    const [query, setQuery] = useContext(MovieContext)
+    const {value, value2} = useContext(MovieContext)
+    const [query, setQuery] = value
+    const [linkAPI, setLinkAPI] = value2
+    const QUERY_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${searchValue}`
+    const WEEK_API = 'https://api.themoviedb.org/3/trending/all/week?api_key=1304eb73177f6db734ad08f218c547c0'
+    const DAY_API = 'https://api.themoviedb.org/3/trending/all/day?api_key=1304eb73177f6db734ad08f218c547c0'
 
     const handleOnchange = (e) => {
         e.preventDefault()
@@ -14,7 +18,7 @@ export const Header = props => {
 
     useEffect(() => {
         console.log(searchValue)
-    }, [searchValue])
+    }, [searchValue, linkAPI])
 
     return ( 
     <div>
@@ -34,13 +38,20 @@ export const Header = props => {
                     <Navbar.Brand>
                         THE MOVIE DATABASE
                     </Navbar.Brand>
+                    <Nav.Link href="#weekly" onClick={() => {
+                        setLinkAPI(WEEK_API)
+                    }}>Weekly</Nav.Link>
+                    <Nav.Link href="#daily" onClick={() => {
+                        setLinkAPI(DAY_API)
+                    }}>Daily</Nav.Link>
+
                 </Nav>
                 <Form inline>
                 <FormControl id="inputSearch" type="text" placeholder="Search" className="mr-sm-2" onChange={handleOnchange} />
                 <Button variant="outline-success" onClick={() => {
-                    if(searchValue!=""){
+                    if(searchValue!==""){
                         setQuery(searchValue)
-                        console.log(query)
+                        setLinkAPI(QUERY_API)
                     }
                 }}>Search</Button>
                 </Form>

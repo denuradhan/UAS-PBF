@@ -4,8 +4,11 @@ import { Modal } from 'react-bootstrap'
 import { MovieContext } from '../contexts/MovieContext';
 
 const Body = props => {
-    const [query, setQuery] = useContext(MovieContext)
-    const BASE_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${query}`
+    const {value, value2} = useContext(MovieContext)
+    const [query, setQuery] = value
+    const [linkAPI, setLinkAPI] = value2
+    const QUERY_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${query}`
+    const WEEK_API = 'https://api.themoviedb.org/3/trending/all/week?api_key=1304eb73177f6db734ad08f218c547c0'
     const [error, setError] = useState(false)
     const [isLoaded, setIsLoaded] = useState(true)
     const [movies, setMovies] = useState()
@@ -15,9 +18,9 @@ const Body = props => {
 
     useEffect(() => {
         handleFilter()
-    }, [BASE_API])
+    }, [linkAPI])
 
-    const handleFilter = (link = BASE_API) => {
+    const handleFilter = (link = linkAPI) => {
         fetch(link)
             .then(res => res.json())
             .then((res) => {
@@ -35,7 +38,7 @@ const Body = props => {
                 <CardColumns>
                     {!isLoaded ? movies.map(movie => (
                             <Card key={movie.id} id={movie.id} >
-                                <Card.Img variant="top" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path} />
+                                <Card.Img variant="top" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path} style={{width: "60%", height:"60%"}} />
                                 <Card.Body>
                                     <Card.Title>{movie.title}</Card.Title>
                                     <Card.Text>
