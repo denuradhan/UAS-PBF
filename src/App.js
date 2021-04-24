@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 function App() {
-  const [ linkAPI, setLinkAPI] = useState("https://api.themoviedb.org/3/trending/all/week?api_key=1304eb73177f6db734ad08f218c547c0")
+  const [ linkAPI, setLinkAPI] = useState("https://api.themoviedb.org/3/trending/movie/week?api_key=1304eb73177f6db734ad08f218c547c0")
   const [ movie, setMovie] = useState("00000")
   return (
       <Router>

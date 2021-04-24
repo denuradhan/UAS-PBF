@@ -11,8 +11,9 @@ const Detail = props => {
     return (
         <div>
             <div style = {{marginTop : "8%" }}>
-                <h1>{movie.title}</h1>
             </div>  
+            <h1>{movie.title}</h1>
+            <h1>{movie.id}</h1>
         </div>
     )
 }
