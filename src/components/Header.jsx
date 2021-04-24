@@ -1,10 +1,14 @@
 import {Button, Navbar, Nav, Form, FormControl} from 'react-bootstrap'
 import React, { useContext, useEffect, useState } from 'react';
-import { MovieContext} from '../contexts/MovieContext';
+import { MovieContext } from '../contexts/MovieContext';
+import { Link } from 'react-router-dom'
+
 
 export const Header = props => {
     const [searchValue, setSearchValue] = useState('')
-    const [linkAPI, setLinkAPI] = useContext(MovieContext)
+    const {value, value2} = useContext(MovieContext)
+    const [linkAPI, setLinkAPI] = value
+    const [movie, setMovie] = value2
     const QUERY_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${searchValue}`
     const WEEK_API = 'https://api.themoviedb.org/3/trending/all/week?api_key=1304eb73177f6db734ad08f218c547c0'
     const DAY_API = 'https://api.themoviedb.org/3/trending/all/day?api_key=1304eb73177f6db734ad08f218c547c0'
@@ -13,14 +17,13 @@ export const Header = props => {
         e.preventDefault()
         setSearchValue(e.target.value)
     }
-
     useEffect(() => {
         console.log(searchValue)
-    }, [searchValue, linkAPI])
+    }, [searchValue, linkAPI])``
 
     return ( 
     <div>
-            <Navbar  bg="dark" variant="dark" fixed="top">
+            <Navbar bg="dark" variant="dark" fixed="top">
             <Navbar.Brand href="https://www.themoviedb.org/" target="_blank">
                 <img
                     src="/blue_square_TMDBLOGO.svg"
@@ -36,21 +39,28 @@ export const Header = props => {
                     <Navbar.Brand>
                         THE MOVIE DATABASE
                     </Navbar.Brand>
-                    <Nav.Link href="#weekly" onClick={() => {
-                        setLinkAPI(WEEK_API)
-                    }}>Weekly</Nav.Link>
-                    <Nav.Link href="#daily" onClick={() => {
-                        setLinkAPI(DAY_API)
-                    }}>Daily</Nav.Link>
-
+                    <Link to="/" onClick={() => {
+                            setLinkAPI(WEEK_API)
+                            console.log("weekly")
+                        }}>
+                        <Button variant="light" size="sm" style={{marginLeft:"10px", marginTop:"5px"}}>Weekly</Button>
+                    </Link>
+                    <Link to="/" onClick={() => {
+                            setLinkAPI(DAY_API)
+                            console.log("daily")
+                        }}>
+                        <Button variant="light" size="sm" style={{marginLeft:"10px", marginTop:"5px"}}>Daily</Button>
+                    </Link>
                 </Nav>
                 <Form inline>
                 <FormControl id="inputSearch" type="text" placeholder="Search" className="mr-sm-2" onChange={handleOnchange} />
-                <Button variant="outline-success" href="#search" onClick={() => {
-                    if(searchValue!==""){
-                        setLinkAPI(QUERY_API)
-                    }
-                }}>Search</Button>
+                    <Link to="/" onClick={() => {
+                            if(searchValue!==""){
+                                setLinkAPI(QUERY_API)
+                            }
+                        }}>
+                        <Button variant="outline-primary" type="submit">Search</Button>
+                    </Link>
                 </Form>
             </Navbar.Collapse>
             </Navbar>
