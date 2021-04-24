@@ -14,7 +14,7 @@ function App() {
   return (
       <Router>
         <div className="App">
-          <MovieContext.Provider value={{value:[linkAPI, setLinkAPI], value2:{movie, setMovie}}}>
+          <MovieContext.Provider value={ {value:[linkAPI, setLinkAPI], value2:[movie, setMovie]} }>
             <Header />
             <Switch>
               <Route path="/" exact component={Body}/>

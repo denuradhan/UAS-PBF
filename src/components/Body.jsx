@@ -4,7 +4,9 @@ import { MovieContext } from '../contexts/MovieContext'
 import { Link } from 'react-router-dom'
 
 const Body = props => {
-    const [linkAPI, setLinkAPI] = useContext(MovieContext)
+    const { value, value2 } = useContext(MovieContext)
+    const [ linkAPI, setLinkAPI ] = value
+    const [movie, setMovie] = value2
     const [isLoaded, setIsLoaded] = useState(true)
     const [movies, setMovies] = useState()
 
@@ -36,7 +38,9 @@ const Body = props => {
                                 <Card.Body>
                                     <Card.Title>{movie.title}</Card.Title>
                                     <Card.Text>
-                                        <Link to="/detail">
+                                        <Link to="/detail" onClick={() => {
+                                                            setMovie(movie)
+                                                        }}>
                                             <Button variant="primary">Detail</Button>
                                         </Link>
                                     </Card.Text>

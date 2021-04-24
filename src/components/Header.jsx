@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export const Header = props => {
     const [searchValue, setSearchValue] = useState('')
-    const {value, value2} = useContext(MovieContext)
+    const { value, value2 } = useContext(MovieContext)
     const [linkAPI, setLinkAPI] = value
     const [movie, setMovie] = value2
     const QUERY_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${searchValue}`
@@ -19,7 +19,7 @@ export const Header = props => {
     }
     useEffect(() => {
         console.log(searchValue)
-    }, [searchValue, linkAPI])``
+    }, [searchValue, linkAPI])
 
     return ( 
     <div>
@@ -59,7 +59,7 @@ export const Header = props => {
                                 setLinkAPI(QUERY_API)
                             }
                         }}>
-                        <Button variant="outline-primary" type="submit">Search</Button>
+                        <Button variant="outline-light" type="submit">Search</Button>
                     </Link>
                 </Form>
             </Navbar.Collapse>
