@@ -1,10 +1,14 @@
-
 import React from 'react';
+import {Navbar} from 'react-bootstrap'
 
 export const Footer = props => {
     return (
-            <div className="footer bg-light mt-2" >
-                <p className='text-right mr-5 ml-5' >Denny Nur Ramadhan@2021</p> 
+            <div fixed="bottom">
+                <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand href="#home">
+                        Deeny Nur Ramadhan@2021
+                    </Navbar.Brand>
+                </Navbar>
             </div>
     );
 };
