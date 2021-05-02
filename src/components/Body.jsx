@@ -4,9 +4,7 @@ import { MovieContext } from '../contexts/MovieContext'
 import { Link } from 'react-router-dom'
 
 const Body = props => {
-    const { value, value2 } = useContext(MovieContext)
-    const [ linkAPI, setLinkAPI ] = value
-    const [movie, setMovie] = value2
+    const [ linkAPI, setLinkAPI ] = useContext(MovieContext) 
     const [isLoaded, setIsLoaded] = useState(true)
     const [movies, setMovies] = useState()
 
@@ -19,7 +17,6 @@ const Body = props => {
             .then(res => res.json())
             .then((res) => {
                 setMovies(res.results)
-                console.log(res.results[0])
                 setIsLoaded(false)
             }).catch(() => {
                 setIsLoaded(true)
@@ -28,7 +25,7 @@ const Body = props => {
 
     return (
         <>
-            <div style = {{marginTop : "8%" }}>
+            <div style = {{marginTop : "6%" }}>
             </div>
             <Col className="container-fluid mt-4">
                 <CardColumns>
@@ -38,9 +35,7 @@ const Body = props => {
                                 <Card.Body>
                                     <Card.Title>{movie.title}</Card.Title>
                                     <Card.Text>
-                                        <Link to="/detail" onClick={() => {
-                                                            setMovie(movie)
-                                                        }}>
+                                        <Link to={"/detail/"+movie.id}>
                                             <Button variant="primary">Detail</Button>
                                         </Link>
                                     </Card.Text>

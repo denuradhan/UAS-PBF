@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom'
 
 export const Header = props => {
     const [searchValue, setSearchValue] = useState('')
-    const { value, value2 } = useContext(MovieContext)
-    const [linkAPI, setLinkAPI] = value
-    const [movie, setMovie] = value2
+    const [linkAPI, setLinkAPI] = useContext(MovieContext)
     const QUERY_API = `https://api.themoviedb.org/3/search/movie?api_key=1304eb73177f6db734ad08f218c547c0&language=en-US&query=${searchValue}`
     const WEEK_API = 'https://api.themoviedb.org/3/trending/movie/week?api_key=1304eb73177f6db734ad08f218c547c0'
     const DAY_API = 'https://api.themoviedb.org/3/trending/movie/day?api_key=1304eb73177f6db734ad08f218c547c0'

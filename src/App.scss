@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.table {
+  width: 100%;
+  height: 500px;
+  border-collapse: collapse;
+}
+
+.posterImage {
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 22%;
+  height: 22%;
+}
+
+.float {
+  float: left;
+}
+.overview {
+  text-align: left;
+}
+.body {
+  height: 100%;
+  width: 100%;
+}
