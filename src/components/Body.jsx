@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Card, CardColumns, Col, Button, Image } from 'react-bootstrap'
+import { Card, CardColumns, Col, Button } from 'react-bootstrap'
 import { MovieContext } from '../contexts/MovieContext'
 import { Link } from 'react-router-dom'
 
@@ -25,7 +25,7 @@ const Body = props => {
 
     return (
         <>
-            <div style = {{marginTop : "6%" }}>
+            <div style = {{marginTop : "8%" }}>
             </div>
             <Col className="container-fluid mt-4">
                 <CardColumns>
@@ -35,7 +35,7 @@ const Body = props => {
                                 <Card.Body>
                                     <Card.Title>{movie.title}</Card.Title>
                                     <Card.Text>
-                                        <Link to={"/detail/"+movie.id}>
+                                        <Link to={"/detail/"+movie.id} target="_blank">
                                             <Button variant="primary">Detail</Button>
                                         </Link>
                                     </Card.Text>

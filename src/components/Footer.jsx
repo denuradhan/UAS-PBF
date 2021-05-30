@@ -5,8 +5,8 @@ export const Footer = props => {
     return (
             <div>
                 <Navbar bg="dark" variant="dark" fixed="bottom">
-                    <Navbar.Brand href="#home">
-                        Deeny Nur Ramadhan@2021
+                    <Navbar.Brand href="#home" style = {{fontSize : '0.8rem' }}>
+                        Denny Nur Ramadhan@2021
                     </Navbar.Brand>
                 </Navbar>
             </div>

@@ -5,8 +5,8 @@ import Body  from './components/Body'
 import Detail  from './components/Detail'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { MovieContext } from './contexts/MovieContext'
-import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
   const [ linkAPI, setLinkAPI] = useState("https://api.themoviedb.org/3/trending/movie/week?api_key=1304eb73177f6db734ad08f218c547c0")
@@ -25,4 +25,5 @@ function App() {
       </Router>
   );
 }
+
 export default App;
